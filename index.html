@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – BTS SIO SLAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rose:     #f2c4ce;
+      --rose-deep:#c9788a;
+      --rose-dark:#7a3346;
+      --lavender: #dcd4f0;
+      --lav-deep: #9b8ec4;
+      --lav-dark: #4a3d72;
+      --cream:    #faf7f4;
+      --white:    #ffffff;
+      --text:     #2a1f2e;
+      --muted:    #7a6e7e;
+      --border:   #e8dde5;
+      --accent:   #e07a8f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ─── CURSOR ─── */
+    body { cursor: none; }
+    #cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--accent); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform .15s ease, width .2s, height .2s, background .2s;
+      mix-blend-mode: multiply;
+    }
+    #cursor.big { width: 36px; height: 36px; background: var(--rose); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 4rem;
+      background: rgba(250,247,244,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; letter-spacing: .04em;
+      color: var(--rose-dark); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; text-align: center;
+      padding: 7rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, #f2c4ce55 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 80% 70%, #dcd4f066 0%, transparent 70%),
+        var(--cream);
+      position: relative; overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--lavender); color: var(--lav-dark);
+      font-size: .75rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; padding: .35rem 1rem;
+      border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--text); margin-bottom: .5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--rose-deep); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 520px; margin: 1rem auto 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block; text-decoration: none; border-radius: 999px;
+      font-size: .85rem; font-weight: 500; letter-spacing: .05em;
+      padding: .7rem 1.8rem; transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--rose-dark); color: #fff;
+      box-shadow: 0 4px 18px rgba(122,51,70,.25);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--text); background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* deco circles */
+    .deco {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; opacity: .45;
+    }
+    .deco-1 { width: 340px; height: 340px; background: var(--rose); top: -80px; right: -80px; }
+    .deco-2 { width: 200px; height: 200px; background: var(--lavender); bottom: 60px; left: -60px; }
+
+    /* avatar placeholder */
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 3px solid var(--rose);
+      background: linear-gradient(135deg, var(--rose) 0%, var(--lavender) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 300; color: var(--rose-dark);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 6px 24px rgba(192,120,138,.2);
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: .72rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: .7rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 300;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--rose-deep); }
+    .divider {
+      width: 48px; height: 2px;
+      background: linear-gradient(90deg, var(--rose-deep), var(--lav-deep));
+      border-radius: 2px; margin-bottom: 2.5rem;
+    }
+
+    /* ─── A PROPOS ─── */
+    #apropos { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .info-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .info-row {
+      display: flex; gap: .75rem; align-items: flex-start;
+      padding: .6rem 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-weight: 500; color: var(--text); min-width: 90px; }
+    .info-value { color: var(--muted); }
+    .tag {
+      display: inline-block; font-size: .75rem; font-weight: 500;
+      padding: .2rem .7rem; border-radius: 999px;
+      background: var(--lavender); color: var(--lav-dark); margin: .2rem .2rem 0 0;
+    }
+    .tag.rose { background: var(--rose); color: var(--rose-dark); }
+
+    /* ─── PROJETS ─── */
+    #projets { background: var(--cream); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(122,51,70,.12);
+    }
+    .project-img {
+      height: 140px;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--lavender) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .project-body { padding: 1.2rem; }
+    .project-title { font-weight: 500; font-size: 1rem; margin-bottom: .4rem; }
+    .project-desc { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .project-placeholder {
+      border: 2px dashed var(--border); background: var(--cream);
+    }
+    .project-placeholder .project-img {
+      background: var(--cream); border-bottom: 1px dashed var(--border);
+    }
+    .placeholder-text {
+      text-align: center; padding: 1.5rem;
+      font-size: .85rem; color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─── STAGES ─── */
+    #stages { background: var(--white); }
+    .stage-placeholder {
+      border: 2px dashed var(--border); border-radius: 16px;
+      padding: 3rem 2rem; text-align: center; color: var(--muted);
+    }
+    .stage-placeholder .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .stage-placeholder h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    /* ─── COMPETENCES ─── */
+    #competences { background: var(--cream); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+    .skill-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.2rem 1.4rem;
+    }
+    .skill-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .8rem; }
+    .skill-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .skill-icon.lav { background: var(--lavender); }
+    .skill-icon.ros { background: var(--rose); }
+    .skill-name { font-weight: 500; font-size: .95rem; }
+    .skill-level { font-size: .78rem; color: var(--muted); }
+    .progress-bar {
+      height: 5px; background: var(--border); border-radius: 999px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose-deep), var(--lav-deep));
+      border-radius: 999px;
+    }
+    .bloc1-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .bloc-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.2rem;
+      border-left: 3px solid var(--rose-deep);
+    }
+    .bloc-ref { font-size: .72rem; font-weight: 600; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; }
+    .bloc-title { font-size: .9rem; font-weight: 500; color: var(--text); margin: .25rem 0 .4rem; }
+    .bloc-status {
+      display: inline-block; font-size: .72rem; padding: .15rem .6rem;
+      border-radius: 999px; font-weight: 500;
+    }
+    .status-partial { background: var(--lavender); color: var(--lav-dark); }
+    .status-todo    { background: var(--border); color: var(--muted); }
+
+    /* ─── VEILLE ─── */
+    #veille { background: var(--white); }
+    .veille-intro {
+      background: linear-gradient(135deg, var(--rose) 0%, var(--lavender) 100%);
+      border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
+    }
+    .veille-theme {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600; color: var(--rose-dark);
+      margin-bottom: .5rem;
+    }
+    .veille-desc { font-size: .9rem; color: var(--rose-dark); opacity: .85; }
+    .articles-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .article-placeholder {
+      border: 2px dashed var(--border); border-radius: 14px; padding: 1.5rem;
+      text-align: center; color: var(--muted); font-size: .85rem; font-style: italic;
+    }
+    .article-placeholder .big { font-size: 1.8rem; margin-bottom: .5rem; }
+    .method-box {
+      background: var(--cream); border-radius: 14px; padding: 1.5rem;
+      border: 1px solid var(--border); margin-top: 1.5rem;
+    }
+    .method-box h4 { font-size: .85rem; font-weight: 500; margin-bottom: .75rem; }
+    .method-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+    /* ─── ANNEXE ─── */
+    #annexe { background: var(--cream); }
+    .annexe-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; text-align: center;
+    }
+    .annexe-box .big-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .annexe-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300; margin-bottom: .5rem;
+    }
+    .annexe-box p { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--white); text-align: center; }
+    .contact-links {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-top: 1.5rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center; padding: 2rem;
+      font-size: .8rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 700px) {
+      nav { padding: .9rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+
+<!-- Navigation -->
+<nav>
+  <a class="nav-logo" href="#hero">Ton Prénom ✦</a>
+  <ul class="nav-links">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#stages">Stages</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#veille">Veille</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="deco deco-1"></div>
+  <div class="deco deco-2"></div>
+  <div class="avatar">T</div>
+  <span class="hero-badge">🎓 BTS SIO • Option SLAM • 2024–2026</span>
+  <h1 class="hero-name">Ton <em>Prénom</em><br>Ton Nom</h1>
+  <p class="hero-sub">
+    Étudiante en développement d'applications web &amp; mobiles.<br>
+    Passionnée par la sécurité applicative et le code bien fait.
+  </p>
+  <div class="hero-btns">
+    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+    <a href="#" class="btn btn-outline">📄 Télécharger mon CV</a>
+  </div>
+</section>
+
+<!-- ═══ À PROPOS ═══ -->
+<section id="apropos">
+  <div class="container fade-in">
+    <p class="section-label">01 — Présentation</p>
+    <h2 class="section-title">À propos <em>de moi</em></h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Bonjour ! Je m'appelle <strong>Ton Prénom</strong>, étudiante en deuxième année de BTS SIO
+          option SLAM au sein de [Nom de ton lycée]. Passionnée d'informatique depuis le lycée,
+          j'ai choisi cette voie pour allier créativité et logique.
+        </p>
+        <p>
+          L'option SLAM me correspond parfaitement : j'aime construire des applications,
+          résoudre des problèmes de code et comprendre comment les systèmes fonctionnent
+          derrière l'interface. Je m'intéresse particulièrement à la sécurité applicative
+          et au développement web.
+        </p>
+        <p>
+          <em style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--rose-deep)">
+            « On est encore trop peu de femmes dans l'info — et c'est exactement pour ça que j'y suis. »
+          </em>
+        </p>
+        <div style="margin-top:1.2rem">
+          <span class="tag rose">HTML / CSS</span>
+          <span class="tag rose">JavaScript</span>
+          <span class="tag rose">Python</span>
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-row">
+          <span class="info-label">Formation</span>
+          <span class="info-value">BTS SIO option SLAM</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Lycée</span>
+          <span class="info-value">[Nom de ton lycée]</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Bac obtenu</span>
+          <span class="info-value">[Ton bac] — [Année]</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Ville</span>
+          <span class="info-value">Paris</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value">ton.email@exemple.fr</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">LinkedIn</span>
+          <span class="info-value"><a href="#" style="color:var(--accent)">Voir mon profil</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">GitHub</span>
+          <span class="info-value"><a href="#" style="color:var(--accent)">Voir mon GitHub</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJETS ═══ -->
+<section id="projets">
+  <div class="container fade-in">
+    <p class="section-label">02 — Réalisations</p>
+    <h2 class="section-title">Mes <em>projets</em></h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+      <!-- Placeholder projets -->
+      <div class="project-card project-placeholder">
+        <div class="project-img">🚧</div>
+        <div class="placeholder-text">
+          <strong>Projet 1</strong><br>
+          À venir — à remplir au fil de ta formation
+        </div>
+      </div>
+      <div class="project-card project-placeholder">
+        <div class="project-img">🚧</div>
+        <div class="placeholder-text">
+          <strong>Projet 2</strong><br>
+          À venir — à remplir au fil de ta formation
+        </div>
+      </div>
+      <div class="project-card project-placeholder">
+        <div class="project-img">🚧</div>
+        <div class="placeholder-text">
+          <strong>Projet 3</strong><br>
+          À venir — à remplir au fil de ta formation
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:.85rem; color:var(--muted); font-style:italic; text-align:center">
+      💡 Cette section sera enrichie au fur et à mesure de tes projets scolaires et personnels.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ STAGES ═══ -->
+<section id="stages">
+  <div class="container fade-in">
+    <p class="section-label">03 — Expérience professionnelle</p>
+    <h2 class="section-title">Mes <em>stages</em></h2>
+    <div class="divider"></div>
+    <div class="stage-placeholder">
+      <div class="icon">💼</div>
+      <h3>Premier stage en approche</h3>
+      <p>
+        Mon premier stage débute dans 2 semaines.<br>
+        Cette section sera complétée avec mes missions, réalisations et les compétences mobilisées.
+      </p>
+      <p style="font-size:.82rem; color:var(--muted); margin-top:1rem; font-style:italic">
+        Organisation, dates, missions et captures d'écran à venir ici.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPÉTENCES BLOC 1 ═══ -->
+<section id="competences">
+  <div class="container fade-in">
+    <p class="section-label">04 — Savoir-faire</p>
+    <h2 class="section-title">Mes <em>compétences</em></h2>
+    <div class="divider"></div>
+
+    <!-- Techs -->
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon ros">💻</div>
+          <div><div class="skill-name">HTML / CSS</div><div class="skill-level">Intermédiaire</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon lav">⚡</div>
+          <div><div class="skill-name">JavaScript</div><div class="skill-level">Débutant–Intermédiaire</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon ros">🐍</div>
+          <div><div class="skill-name">Python</div><div class="skill-level">Débutant</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon lav">🐘</div>
+          <div><div class="skill-name">PHP / MySQL</div><div class="skill-level">Débutant</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon ros">🔧</div>
+          <div><div class="skill-name">Git / GitHub</div><div class="skill-level">Intermédiaire</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon lav">🐧</div>
+          <div><div class="skill-name">Linux</div><div class="skill-level">Débutant</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+      </div>
+    </div>
+
+    <!-- Bloc 1 -->
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; margin-top:3rem; margin-bottom:.3rem">
+      Compétences <em style="color:var(--rose-deep)">Bloc 1</em> — référentiel BTS SIO
+    </h3>
+    <div class="divider"></div>
+    <div class="bloc1-grid">
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.1</div>
+        <div class="bloc-title">Répondre aux incidents et demandes d'assistance</div>
+        <span class="bloc-status status-todo">À acquérir en stage</span>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.2</div>
+        <div class="bloc-title">Gérer le patrimoine informatique</div>
+        <span class="bloc-status status-partial">En cours d'acquisition</span>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.3</div>
+        <div class="bloc-title">Gérer les accès et l'identité</div>
+        <span class="bloc-status status-todo">À acquérir en stage</span>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.4</div>
+        <div class="bloc-title">Mettre à disposition un service informatique</div>
+        <span class="bloc-status status-partial">En cours d'acquisition</span>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.5</div>
+        <div class="bloc-title">Former et accompagner les utilisateurs</div>
+        <span class="bloc-status status-todo">À acquérir</span>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B1.6</div>
+        <div class="bloc-title">Organiser son développement professionnel</div>
+        <span class="bloc-status status-partial">En cours — veille active</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VEILLE TECHNO ═══ -->
+<section id="veille">
+  <div class="container fade-in">
+    <p class="section-label">05 — Veille technologique</p>
+    <h2 class="section-title">Ma <em>veille</em></h2>
+    <div class="divider"></div>
+
+    <div class="veille-intro">
+      <div class="veille-theme">🔐 Sécurisation des applications web : montée en puissance du Zero Trust</div>
+      <div class="veille-desc">
+        Approche « Never trust, always verify » — Impacts sur l'authentification et la gestion
+        des droits dans les applications web. En lien direct avec mon option SLAM.
+      </div>
+    </div>
+
+    <p style="font-size:.9rem; color:var(--muted); margin-bottom:1.5rem">
+      Les articles ci-dessous seront complétés au fil de ma veille.
+      Chaque article inclura une image, un résumé et un lien vers la source originale.
+    </p>
+
+    <div class="articles-grid">
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 1 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 2 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 3 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 4 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 5 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+      <div class="article-placeholder">
+        <div class="big">📰</div>
+        Article 6 — À venir<br><small>Ajouter titre, résumé et lien</small>
+      </div>
+    </div>
+
+    <div class="method-box">
+      <h4>🛠 Méthode de veille utilisée</h4>
+      <div class="method-tags">
+        <span class="tag">Feedly</span>
+        <span class="tag">Google Alerts</span>
+        <span class="tag rose">Reddit r/netsec</span>
+        <span class="tag rose">Newsletter OWASP</span>
+        <span class="tag">Flux RSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ANNEXE 8.1 ═══ -->
+<section id="annexe">
+  <div class="container fade-in">
+    <p class="section-label">06 — Document officiel</p>
+    <h2 class="section-title">Annexe <em>8.1</em></h2>
+    <div class="divider"></div>
+    <div class="annexe-box">
+      <div class="big-icon">📋</div>
+      <h3>Tableau de synthèse des compétences</h3>
+      <p>
+        L'Annexe 8.1 liste toutes mes réalisations (projets et stages) et les blocs de
+        compétences mobilisés. Ce document est à compléter tout au long de ma formation.
+      </p>
+      <a href="#" class="btn btn-primary">📄 Télécharger l'Annexe 8.1</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container fade-in">
+    <p class="section-label">07 — Me retrouver</p>
+    <h2 class="section-title"><em>Contact</em> & liens</h2>
+    <div class="divider" style="margin:0 auto 1.5rem"></div>
+    <p style="color:var(--muted); max-width:480px; margin:0 auto 1rem">
+      Tu peux me retrouver sur LinkedIn ou GitHub, ou m'envoyer un mail directement.
+    </p>
+    <div class="contact-links">
+      <a href="#" class="btn btn-primary">💼 LinkedIn</a>
+      <a href="#" class="btn btn-outline">🐙 GitHub</a>
+      <a href="mailto:ton.email@exemple.fr" class="btn btn-outline">✉️ Email</a>
+      <a href="#" class="btn btn-outline">📄 Mon CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  Portfolio réalisé dans le cadre du BTS SIO SLAM — Épreuve E5 &nbsp;·&nbsp;
+  <span style="color:var(--rose-deep)">Ton Prénom Ton Nom</span> — 2025–2026
+</footer>
+
+<script>
+  /* ── Cursor ── */
+  const cur = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, .btn, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('big'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+  });
+
+  /* ── Scroll fade-in ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
