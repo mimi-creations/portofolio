@@ -232,6 +232,21 @@
       margin-bottom: .5rem;
     }
 
+    /* ─── FICHE STAGENSEMBLE ─── */
+    #stagensemble { background: var(--cream); }
+    .fiche { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+    .fiche-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem 2rem; margin-top: 1.5rem; }
+    .fiche h3 { font-size: .8rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+    .fiche p, .fiche li { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+    .fiche ul { padding-left: 1.1rem; }
+    .fiche li { margin-bottom: .35rem; }
+    .fiche .project-tags { margin: 1rem 0 0; }
+    .stage-card { border: 1px solid var(--border); border-radius: 16px; padding: 2rem; background: var(--white); }
+    .stage-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--text); margin-bottom: .3rem; }
+    .stage-card h4 { font-size: .95rem; font-weight: 500; margin: 1.2rem 0 .4rem; }
+    .stage-card ul { padding-left: 1.1rem; }
+    .stage-card li { font-size: .88rem; color: var(--muted); margin-bottom: .3rem; }
+
     /* ─── COMPETENCES ─── */
     #competences { background: var(--cream); }
     .skills-grid {
@@ -456,6 +471,23 @@
     <div class="projects-grid">
 
   <div class="project-card">
+    <div class="project-img">💬</div>
+    <div class="project-body">
+      <div class="project-title">StagEnsemble — Plateforme entre stagiaires</div>
+      <div class="project-desc">Plateforme de type intranet de mise en relation et de collaboration entre stagiaires, développée en binôme pendant mon stage chez Attijariwafa Bank.</div>
+      <div class="project-tags">
+        <span class="tag rose">PHP / MySQL</span>
+        <span class="tag rose">JavaScript</span>
+        <span class="tag">Projet de stage</span>
+        <span class="tag">Travail en équipe</span>
+      </div>
+      <div style="margin-top:1rem;">
+        <a href="#stagensemble" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir la fiche détaillée →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
     <div class="project-img" style="background:none;padding:0;">
       <img src="driveeasy.png" alt="DriveEasy" style="width:100%;height:140px;object-fit:cover;">
     </div>
@@ -471,6 +503,7 @@
         <a href="http://driveeazy.infinityfreeapp.com/" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le site →</a>
         <a href="https://github.com/mimi-creations/driveeasy" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le code →</a>
       </div>
+    </div>
   </div>
 
   <div class="project-card">
@@ -503,10 +536,62 @@
     </div>
   </div>
 </div>
+  </div>
+</section>
+
+<!-- ═══ STAGES ═══ -->
+<section id="stagensemble">
+  <div class="container fade-in">
+    <p class="section-label">Projet de stage</p>
+    <h2 class="section-title">Stag<em>Ensemble</em></h2>
+    <div class="divider"></div>
+    <div class="fiche">
+      <p>Plateforme de type intranet de mise en relation et de collaboration entre stagiaires, développée <b>en binôme</b> pendant mon stage de première année chez Attijariwafa Bank (La Défense).</p>
+      <div class="project-tags">
+        <span class="tag rose">PHP</span>
+        <span class="tag rose">MySQL (PDO)</span>
+        <span class="tag rose">HTML / CSS</span>
+        <span class="tag rose">JavaScript</span>
+        <span class="tag">Git / GitHub</span>
+      </div>
+      <div class="fiche-grid">
+        <div>
+          <h3>Organisation du travail</h3>
+          <p>Nous avons réparti la création du site en deux parties et partagé le code via GitHub à chaque avancée, dans un dépôt commun.</p>
+        </div>
+        <div>
+          <h3>Mon rôle</h3>
+          <ul>
+            <li>Pages <b>inscription</b>, <b>connexion</b>, <b>accueil</b>, <b>« ressources et problèmes »</b> et <b>« mon compte »</b>.</li>
+            <li>Système de <b>notifications</b> des messages privés : pastille de messages non lus et mise à jour du titre de l'onglet, y compris en arrière-plan.</li>
+          </ul>
+          <p style="margin-top:.6rem">Ma binôme a réalisé le chat entre stagiaires et la messagerie privée, relu certains de mes points bloquants et ajouté la gestion des images dans « ressources et problèmes ».</p>
+        </div>
+        <div>
+          <h3>Difficultés et solutions</h3>
+          <ul>
+            <li><b>Notifications en arrière-plan</b> : faire apparaître la notification sans que l'utilisateur soit sur la page de messagerie a été la partie la plus difficile du projet.</li>
+            <li><b>Intégration à deux</b> : fusion du code de chacun dans un dépôt GitHub unique et correction des incohérences entre pages.</li>
+            <li><b>Bugs</b> sur les pages connexion, inscription, navigation et accueil (PHP, HTML, JavaScript).</li>
+            <li><b>Touche Entrée</b> inopérante sur les formulaires : une parenthèse manquante dans un gestionnaire JavaScript, corrigée après débogage.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Sécurité</h3>
+          <ul>
+            <li>Mots de passe <b>hachés</b> : ils ne sont jamais stockés en clair et ne peuvent pas être déchiffrés, même en cas d'accès à la base de données.</li>
+          </ul>
+          <p>Réalisé en binôme.</p>
+        </div>
+        <div>
+          <h3>Compétences mobilisées</h3>
+          <ul>
+            <li><b>Bloc 2</b> : concevoir et développer une solution applicative, assurer la maintenance corrective, gérer les données.</li>
+            <li>Travail en équipe, Git / GitHub, autonomie, résolution de problèmes.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p style="margin-top:1.5rem; font-size:.85rem; color:var(--muted); font-style:italic; text-align:center">
-      💡 Cette section sera enrichie au fur et à mesure de tes projets scolaires et personnels.
-    </p>
   </div>
 </section>
 
@@ -516,26 +601,25 @@
     <p class="section-label">03 — Expérience professionnelle</p>
     <h2 class="section-title">Mes <em>stages</em></h2>
     <div class="divider"></div>
-    <div class="stage-placeholder">
-      <div class="icon">💼</div>
-      <h3>Stage - Attijariwafa Bank (La Défense)</h3>
-      <p>
-        <i> Stage de première année de BTS SIO SLAM - jusqu'au 3 juillet 2026</i> <br>
-        <b>Mission 1: SQL et reporting réglementaire</b> <br>
-      </p>
-      <p style="font-size:.82rem; color:var(--muted); margin-top:1rem; font-style:italic">
-        <ul>
-          <li>-Création de procédures SQL pour un projet de reporting réglementaire.</li>
-          <li>-Outils: Oracle SQL Developer, Pentaho.</li>
-        </ul>
-        <b>Mission 2: gestion de projet et développement d'une plateforme de mise en relation entre stagiaires (StagEnsemble)</b>
-        <ul>
-          <li>-Projet mené en binome: organisation du travail, répartition des taches, suivi de l'avancement.</li>
-          <li>-Développement en PHP/MySQL: messagerie de groupe et privée, notifications, interface responsive avec mode clair/sombre.</li>
-          <li>-Résolution d'incidents techniques (migration de base de données, sauvegarde des données.</li>
-        </ul>
-      <b> Compétences mobilisées:</b> SQL, PHP/MySQL, travail en équipe, gestion de projet, autonomie, résolution de problèmes.
-      </p>
+    <div class="stage-card">
+      <h3>Stage — Attijariwafa Bank (La Défense)</h3>
+      <p style="font-size:.88rem;color:var(--muted);font-style:italic;">Stage de première année de BTS SIO SLAM, jusqu'au 3 juillet 2026</p>
+
+      <h4>Mission 1 : SQL et reporting réglementaire</h4>
+      <ul>
+        <li>Création de procédures SQL pour un projet de reporting réglementaire.</li>
+        <li>Outils : Oracle SQL Developer, Pentaho.</li>
+      </ul>
+
+      <h4>Mission 2 : gestion de projet et développement de StagEnsemble</h4>
+      <ul>
+        <li>Projet mené en binôme : organisation du travail, répartition des tâches, suivi de l'avancement.</li>
+        <li>Développement en PHP/MySQL des pages d'authentification, de l'accueil, de « ressources et problèmes », de « mon compte » et des notifications. <a href="#stagensemble" style="color:var(--accent);font-weight:500;">Voir la fiche du projet →</a></li>
+        <li>Résolution d'incidents techniques (migration de la base de données, sauvegarde des données).</li>
+      </ul>
+
+      <h4>Compétences mobilisées</h4>
+      <p style="font-size:.88rem;color:var(--muted);">SQL, PHP/MySQL, travail en équipe, gestion de projet, autonomie, résolution de problèmes.</p>
     </div>
   </div>
 </section>
