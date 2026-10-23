@@ -231,36 +231,41 @@
       font-size: 1.4rem; font-weight: 300; color: var(--text);
       margin-bottom: .5rem;
     }
+
+    /* ─── GALERIE DE CAPTURES (StagEnsemble) ─── */
     .galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.galerie figure {
-  margin: 0;
-  text-align: center;
-}
-
-.galerie img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s;
-}
-
-.galerie img:hover {
-  transform: scale(1.03);
-}
-
-.galerie figcaption {
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .galerie figure {
+      margin: 0;
+      text-align: center;
+    }
+    .galerie img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s;
+    }
+    .galerie img:hover {
+      transform: scale(1.03);
+    }
+    .galerie figcaption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .galerie figcaption small {
+      display: block;
+      font-size: .75rem;
+      color: var(--muted);
+      font-style: italic;
+    }
 
     /* ─── FICHE STAGENSEMBLE ─── */
     #stagensemble { background: var(--cream); }
@@ -400,6 +405,7 @@
   <ul class="nav-links">
     <li><a href="#apropos">À propos</a></li>
     <li><a href="#projets">Projets</a></li>
+    <li><a href="#stagensemble">StagEnsemble</a></li>
     <li><a href="#stages">Stages</a></li>
     <li><a href="#competences">Compétences</a></li>
     <li><a href="#veille">Veille</a></li>
@@ -500,147 +506,77 @@
     <div class="divider"></div>
     <div class="projects-grid">
 
-  <div class="project-card">
-    <div class="project-img">💬</div>
-    <div class="project-body">
-      <div class="project-title">StagEnsemble — Plateforme entre stagiaires</div>
-      <div class="project-desc">Plateforme de type intranet de mise en relation et de collaboration entre stagiaires, développée en binôme pendant mon stage chez Attijariwafa Bank.</div>
-      <div class="project-tags">
-        <span class="tag rose">PHP / MySQL</span>
-        <span class="tag rose">JavaScript</span>
-        <span class="tag">Projet de stage</span>
-        <span class="tag">Travail en équipe</span>
+      <div class="project-card">
+        <div class="project-img">💬</div>
+        <div class="project-body">
+          <div class="project-title">StagEnsemble — Plateforme entre stagiaires</div>
+          <div class="project-desc">Plateforme de type intranet de mise en relation et de collaboration entre stagiaires, développée en binôme pendant mon stage chez Attijariwafa Bank.</div>
+          <div class="project-tags">
+            <span class="tag rose">PHP / MySQL</span>
+            <span class="tag rose">JavaScript</span>
+            <span class="tag">Projet de stage</span>
+            <span class="tag">Travail en équipe</span>
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="#stagensemble" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir la fiche détaillée et les captures →</a>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:1rem;">
-        <a href="#stagensemble" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir la fiche détaillée →</a>
-      </div>
-       <div class="galerie">
-      <figure>
-        <a href="images/stagensemble/connexion.png" target="_blank">
-          <img src="images/stagensemble/connexion.png" alt="Page de connexion" loading="lazy">
-        </a>
-        <figcaption>Connexion</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/inscription.png" target="_blank">
-          <img src="images/stagensemble/inscription.png" alt="Page d'inscription" loading="lazy">
-        </a>
-        <figcaption>Inscription</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/accueil.png" target="_blank">
-          <img src="images/stagensemble/accueil.png" alt="Page d'accueil" loading="lazy">
-        </a>
-        <figcaption>Accueil</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/ressources.png" target="_blank">
-          <img src="images/stagensemble/ressources.png" alt="Ressources et problèmes" loading="lazy">
-        </a>
-        <figcaption>Ressources et problèmes</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/annuaire.png" target="_blank">
-          <img src="images/stagensemble/annuaire.png" alt="Annuaire des stagiaires" loading="lazy">
-        </a>
-        <figcaption>Annuaire</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/profilstagiaire.png" target="_blank">
-          <img src="images/stagensemble/profilstagiaire.png" alt="Profil d'un stagiaire" loading="lazy">
-        </a>
-        <figcaption>Profil d'un stagiaire</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/moncompte.png" target="_blank">
-          <img src="images/stagensemble/moncompte.png" alt="Page Mon compte" loading="lazy">
-        </a>
-        <figcaption>Mon compte</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/chatstagiaires.png" target="_blank">
-          <img src="images/stagensemble/chatstagiaires.png" alt="Chat entre stagiaires" loading="lazy">
-        </a>
-        <figcaption>Chat entre stagiaires</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/messagerie.png" target="_blank">
-          <img src="images/stagensemble/messagerie.png" alt="Messagerie privée" loading="lazy">
-        </a>
-        <figcaption>Messagerie privée</figcaption>
-      </figure>
-  
-      <figure>
-        <a href="images/stagensemble/darkmode.png" target="_blank">
-          <img src="images/stagensemble/darkmode.png" alt="Mode sombre" loading="lazy">
-        </a>
-        <figcaption>Mode sombre</figcaption>
-      </figure>
-    </div>
-    </div>
-  </div>
 
-  <div class="project-card">
-    <div class="project-img" style="background:none;padding:0;">
-      <img src="driveeasy.png" alt="DriveEasy" style="width:100%;height:140px;object-fit:cover;">
-    </div>
-    <div class="project-body">
-      <div class="project-title">DriveEasy — Location de voiture</div>
-      <div class="project-desc">Site web de location de voitures développé en projet scolaire. Gestion des véhicules, réservations et interface utilisateur complète.</div>
-      <div class="project-tags">
-        <span class="tag rose">HTML / CSS</span>
-        <span class="tag rose">PHP</span>
-        <span class="tag">Projet scolaire</span>
+      <div class="project-card">
+        <div class="project-img" style="background:none;padding:0;">
+          <img src="driveeasy.png" alt="DriveEasy" style="width:100%;height:140px;object-fit:cover;">
+        </div>
+        <div class="project-body">
+          <div class="project-title">DriveEasy — Location de voiture</div>
+          <div class="project-desc">Site web de location de voitures développé en projet scolaire. Gestion des véhicules, réservations et interface utilisateur complète.</div>
+          <div class="project-tags">
+            <span class="tag rose">HTML / CSS</span>
+            <span class="tag rose">PHP</span>
+            <span class="tag">Projet scolaire</span>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+            <a href="http://driveeazy.infinityfreeapp.com/" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le site →</a>
+            <a href="https://github.com/mimi-creations/driveeasy" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le code →</a>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
-        <a href="http://driveeazy.infinityfreeapp.com/" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le site →</a>
-        <a href="https://github.com/mimi-creations/driveeasy" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Voir le code →</a>
-      </div>
-    </div>
-  </div>
 
-  <div class="project-card">
-    <div class="project-img">⛅</div>
-    <div class="project-body">
-      <div class="project-title">WeatherApp — Site météo</div>
-      <div class="project-desc">Application météo en temps réel utilisant une API externe. Affichage des conditions météorologiques selon la ville recherchée.</div>
-      <div class="project-tags">
-        <span class="tag rose">HTML / CSS</span>
-        <span class="tag rose">JavaScript</span>
-        <span class="tag">API REST</span>
-        <span class="tag">Projet scolaire</span>
+      <div class="project-card">
+        <div class="project-img">⛅</div>
+        <div class="project-body">
+          <div class="project-title">WeatherApp — Site météo</div>
+          <div class="project-desc">Application météo en temps réel utilisant une API externe. Affichage des conditions météorologiques selon la ville recherchée.</div>
+          <div class="project-tags">
+            <span class="tag rose">HTML / CSS</span>
+            <span class="tag rose">JavaScript</span>
+            <span class="tag">API REST</span>
+            <span class="tag">Projet scolaire</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="project-card">
-    <div class="project-img">🐧</div>
-    <div class="project-body">
-      <div class="project-title">Tutoriel — Installation Debian 13</div>
-      <div class="project-desc">Procédure complète d'installation et de configuration de Debian 13 en machine virtuelle, rédigée pas à pas avec captures d'écran.</div>
-      <div class="project-tags">
-        <span class="tag">Linux</span>
-        <span class="tag">Virtualisation</span>
-        <span class="tag">Documentation</span>
+      <div class="project-card">
+        <div class="project-img">🐧</div>
+        <div class="project-body">
+          <div class="project-title">Tutoriel — Installation Debian 13</div>
+          <div class="project-desc">Procédure complète d'installation et de configuration de Debian 13 en machine virtuelle, rédigée pas à pas avec captures d'écran.</div>
+          <div class="project-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Virtualisation</span>
+            <span class="tag">Documentation</span>
+          </div>
+          <div style="margin-top:1rem">
+            <span style="font-size:.8rem;color:var(--muted);font-style:italic;">Documentation en cours de rédaction</span>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:1rem">
-        <span style="font-size:.8rem;color:var(--muted);font-style:italic;">Documentation en cours de rédaction</span>
-      </div>
+
     </div>
-  </div>
-</div>
   </div>
 </section>
 
-<!-- ═══ STAGES ═══ -->
+<!-- ═══ FICHE PROJET STAGENSEMBLE ═══ -->
 <section id="stagensemble">
   <div class="container fade-in">
     <p class="section-label">Projet de stage</p>
@@ -691,6 +627,82 @@
             <li>Travail en équipe, Git / GitHub, autonomie, résolution de problèmes.</li>
           </ul>
         </div>
+      </div>
+
+      <!-- ── Captures d'écran ── -->
+      <h3 style="margin-top:2rem">Captures d'écran</h3>
+      <div class="galerie">
+
+        <figure>
+          <a href="images/stagensemble/connexion.png" target="_blank">
+            <img src="images/stagensemble/connexion.png" alt="Page de connexion" loading="lazy">
+          </a>
+          <figcaption>Connexion</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/inscription.png" target="_blank">
+            <img src="images/stagensemble/inscription.png" alt="Page d'inscription" loading="lazy">
+          </a>
+          <figcaption>Inscription</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/accueil.png" target="_blank">
+            <img src="images/stagensemble/accueil.png" alt="Page d'accueil" loading="lazy">
+          </a>
+          <figcaption>Accueil</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/ressources.png" target="_blank">
+            <img src="images/stagensemble/ressources.png" alt="Ressources et problèmes" loading="lazy">
+          </a>
+          <figcaption>Ressources et problèmes</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/annuaire.png" target="_blank">
+            <img src="images/stagensemble/annuaire.png" alt="Annuaire des stagiaires" loading="lazy">
+          </a>
+          <figcaption>Annuaire</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/profilstagiaire.png" target="_blank">
+            <img src="images/stagensemble/profilstagiaire.png" alt="Profil d'un stagiaire" loading="lazy">
+          </a>
+          <figcaption>Profil d'un stagiaire</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/moncompte.png" target="_blank">
+            <img src="images/stagensemble/moncompte.png" alt="Page Mon compte" loading="lazy">
+          </a>
+          <figcaption>Mon compte</figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/chatstagiaires.png" target="_blank">
+            <img src="images/stagensemble/chatstagiaires.png" alt="Chat entre stagiaires" loading="lazy">
+          </a>
+          <figcaption>Chat entre stagiaires <small>(réalisé par ma binôme)</small></figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/messagerie.png" target="_blank">
+            <img src="images/stagensemble/messagerie.png" alt="Messagerie privée" loading="lazy">
+          </a>
+          <figcaption>Messagerie privée <small>(ma binôme, avec mes notifications)</small></figcaption>
+        </figure>
+
+        <figure>
+          <a href="images/stagensemble/darkmode.png" target="_blank">
+            <img src="images/stagensemble/darkmode.png" alt="Mode sombre" loading="lazy">
+          </a>
+          <figcaption>Mode sombre</figcaption>
+        </figure>
+
       </div>
     </div>
   </div>
@@ -840,67 +852,67 @@
 
     <div class="articles-grid">
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">🔐</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">ANSSI • Juin 2025</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Modèle Zero Trust — Les fondamentaux</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Le guide officiel de l'ANSSI explique les bases du Zero Trust : vérification continue des identités, authentification forte, principe du moindre privilège et contrôle des accès.</div>
-      <a href="https://messervices.cyber.gouv.fr/documents-guides/anssi-fondamentaux-zero-trust-v1.0.pdf" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">🔐</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">ANSSI • Juin 2025</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Modèle Zero Trust — Les fondamentaux</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Le guide officiel de l'ANSSI explique les bases du Zero Trust : vérification continue des identités, authentification forte, principe du moindre privilège et contrôle des accès.</div>
+          <a href="https://messervices.cyber.gouv.fr/documents-guides/anssi-fondamentaux-zero-trust-v1.0.pdf" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">🛡️</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Microsoft • 2026</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Sécuriser les applications avec Zero Trust</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Microsoft explique comment protéger les applications et API selon les 3 principes Zero Trust : vérifier explicitement, accès moindre privilège, anticiper les violations.</div>
-      <a href="https://learn.microsoft.com/fr-fr/security/zero-trust/deploy/applications" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">🛡️</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Microsoft • 2026</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Sécuriser les applications avec Zero Trust</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Microsoft explique comment protéger les applications et API selon les 3 principes Zero Trust : vérifier explicitement, accès moindre privilège, anticiper les violations.</div>
+          <a href="https://learn.microsoft.com/fr-fr/security/zero-trust/deploy/applications" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">🔑</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Akamai • 2025</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Que signifie Zero Trust ? Le modèle expliqué</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Présentation du principe "ne jamais faire confiance, toujours vérifier" : chaque utilisateur et appareil doit prouver son identité à chaque connexion, même depuis l'intérieur du réseau.</div>
-      <a href="https://www.akamai.com/fr/glossary/what-is-zero-trust" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">🔑</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Akamai • 2025</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Que signifie Zero Trust ? Le modèle expliqué</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Présentation du principe "ne jamais faire confiance, toujours vérifier" : chaque utilisateur et appareil doit prouver son identité à chaque connexion, même depuis l'intérieur du réseau.</div>
+          <a href="https://www.akamai.com/fr/glossary/what-is-zero-trust" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">🏛️</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Microsoft • 2026</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Architecture Zero Trust (ZTA) — Vue d'ensemble</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">L'architecture Zero Trust authentifie chaque requête d'accès et anticipe les cyberattaques grâce au chiffrement de bout en bout, au MFA et à la surveillance continue du réseau.</div>
-      <a href="https://www.microsoft.com/fr-fr/security/business/security-101/what-is-zero-trust-architecture" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">🏛️</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Microsoft • 2026</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Architecture Zero Trust (ZTA) — Vue d'ensemble</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">L'architecture Zero Trust authentifie chaque requête d'accès et anticipe les cyberattaques grâce au chiffrement de bout en bout, au MFA et à la surveillance continue du réseau.</div>
+          <a href="https://www.microsoft.com/fr-fr/security/business/security-101/what-is-zero-trust-architecture" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">👤</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Trend Micro • 2026</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Authentification Zero Trust — Comment ça marche ?</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Le MFA ne suffit pas : Zero Trust impose une vérification continue de l'identité ET de l'appareil, avec des politiques d'accès qui évoluent en temps réel selon le contexte.</div>
-      <a href="https://www.trendmicro.com/fr_fr/what-is/what-is-zero-trust/zero-trust-authentication.html" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--rose),var(--lavender));display:flex;align-items:center;justify-content:center;font-size:2rem;">👤</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Trend Micro • 2026</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Authentification Zero Trust — Comment ça marche ?</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Le MFA ne suffit pas : Zero Trust impose une vérification continue de l'identité ET de l'appareil, avec des politiques d'accès qui évoluent en temps réel selon le contexte.</div>
+          <a href="https://www.trendmicro.com/fr_fr/what-is/what-is-zero-trust/zero-trust-authentication.html" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-  <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-    <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">☁️</div>
-    <div style="padding:1rem;">
-      <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">BigID • Janvier 2026</div>
-      <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Implémenter Zero Trust — Guide étape par étape</div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Comment déployer concrètement une architecture Zero Trust : évaluation de l'existant, gestion des identités (IAM), MFA, contrôle d'accès basé sur les rôles (RBAC) et microsegmentation.</div>
-      <a href="https://bigid.com/fr/blog/how-to-implement-zero-trust/" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
-    </div>
-  </div>
+      <div class="article-card" style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="height:80px;background:linear-gradient(135deg,var(--lavender),var(--rose));display:flex;align-items:center;justify-content:center;font-size:2rem;">☁️</div>
+        <div style="padding:1rem;">
+          <div style="font-size:.7rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">BigID • Janvier 2026</div>
+          <div style="font-weight:500;font-size:.9rem;margin-bottom:.5rem;">Implémenter Zero Trust — Guide étape par étape</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem;">Comment déployer concrètement une architecture Zero Trust : évaluation de l'existant, gestion des identités (IAM), MFA, contrôle d'accès basé sur les rôles (RBAC) et microsegmentation.</div>
+          <a href="https://bigid.com/fr/blog/how-to-implement-zero-trust/" target="_blank" style="font-size:.8rem;color:var(--accent);font-weight:500;">Lire l'article →</a>
+        </div>
+      </div>
 
-</div>
+    </div>
 
     <div class="method-box">
       <h4>🛠 Méthode de veille utilisée</h4>
