@@ -114,6 +114,8 @@
       color: var(--text); background: transparent;
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-disabled { opacity: .5; cursor: default; pointer-events: none; }
+    .btn-disabled:hover { transform: none; }
 
     /* deco circles */
     .deco {
@@ -314,6 +316,7 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1rem; margin-top: 2.5rem;
     }
+    .divider + .bloc1-grid { margin-top: 0; }
     .bloc-card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: 14px; padding: 1.2rem;
@@ -327,6 +330,14 @@
     }
     .status-partial { background: var(--lavender); color: var(--lav-dark); }
     .status-todo    { background: var(--border); color: var(--muted); }
+    .status-done { background: #e3f1e6; color: #2f6b3d; }
+  .bloc-proof { margin-top: .8rem; font-size: .85rem; line-height: 1.5; color: var(--muted); }
+  .bloc-proof a { color: var(--rose-deep); text-decoration: underline; }
+  details.bloc1-details summary {
+    cursor: pointer; list-style: none;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300;
+  }
+  details.bloc1-details summary::-webkit-details-marker { display: none; }
 
     /* ─── VEILLE ─── */
     #veille { background: var(--white); }
@@ -427,6 +438,7 @@
   <div class="hero-btns">
     <a href="#projets" class="btn btn-primary">Voir mes projets</a>
     <a href="CV.pdf" class="btn btn-outline">📄 Télécharger mon CV</a>
+    <span class="btn btn-primary btn-disabled">📄 Annexe 8.1 — bientôt disponible</span>
   </div>
 </section>
 
@@ -737,14 +749,13 @@
   </div>
 </section>
 
-<!-- ═══ COMPÉTENCES BLOC 1 ═══ -->
+<!-- ═══ COMPÉTENCES ═══ -->
 <section id="competences">
   <div class="container fade-in">
     <p class="section-label">04 — Savoir-faire</p>
     <h2 class="section-title">Mes <em>compétences</em></h2>
     <div class="divider"></div>
 
-    <!-- Techs -->
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-header">
@@ -770,63 +781,116 @@
       <div class="skill-card">
         <div class="skill-header">
           <div class="skill-icon lav">🐘</div>
-          <div><div class="skill-name">PHP / MySQL</div><div class="skill-level">Débutant</div></div>
+          <div><div class="skill-name">PHP / MySQL</div><div class="skill-level">Intermédiaire</div></div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
       </div>
       <div class="skill-card">
         <div class="skill-header">
-          <div class="skill-icon ros">🔧</div>
+          <div class="skill-icon ros">🗄️</div>
+          <div><div class="skill-name">SQL (MySQL, Oracle)</div><div class="skill-level">Intermédiaire</div></div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon lav">🔧</div>
           <div><div class="skill-name">Git / GitHub</div><div class="skill-level">Intermédiaire</div></div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
       </div>
       <div class="skill-card">
         <div class="skill-header">
-          <div class="skill-icon lav">🐧</div>
+          <div class="skill-icon ros">🐧</div>
           <div><div class="skill-name">Linux</div><div class="skill-level">Débutant</div></div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
       </div>
     </div>
-
-    <!-- Bloc 1 -->
-    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; margin-top:3rem; margin-bottom:.3rem">
-      Compétences <em style="color:var(--rose-deep)">Bloc 1</em> — référentiel BTS SIO
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; margin-top:3rem; margin-bottom:.3rem">
+      Compétences <em style="color:var(--rose-deep)">Bloc 2</em> — Conception et développement d'applications
     </h3>
     <div class="divider"></div>
     <div class="bloc1-grid">
       <div class="bloc-card">
-        <div class="bloc-ref">B1.1</div>
-        <div class="bloc-title">Répondre aux incidents et demandes d'assistance</div>
-        <span class="bloc-status status-todo">À acquérir en stage</span>
+        <div class="bloc-ref">B2.1</div>
+        <div class="bloc-title">Concevoir et développer une solution applicative</div>
+        <span class="bloc-status status-done">Mobilisée en projet</span>
+        <div class="bloc-proof">
+          Preuves : <a href="#stagensemble">StagEnsemble</a> (pages, notifications), <a href="#projets">DriveEasy</a>
+        </div>
       </div>
       <div class="bloc-card">
-        <div class="bloc-ref">B1.2</div>
-        <div class="bloc-title">Gérer le patrimoine informatique</div>
-        <span class="bloc-status status-partial">En cours d'acquisition</span>
+        <div class="bloc-ref">B2.2</div>
+        <div class="bloc-title">Assurer la maintenance corrective ou évolutive d'une solution applicative</div>
+        <span class="bloc-status status-done">Mobilisée en projet</span>
+        <div class="bloc-proof">
+          Preuves : correction des bugs de connexion, d'inscription et de la touche Entrée dans <a href="#stagensemble">StagEnsemble</a>
+        </div>
       </div>
       <div class="bloc-card">
-        <div class="bloc-ref">B1.3</div>
-        <div class="bloc-title">Gérer les accès et l'identité</div>
-        <span class="bloc-status status-todo">À acquérir en stage</span>
-      </div>
-      <div class="bloc-card">
-        <div class="bloc-ref">B1.4</div>
-        <div class="bloc-title">Mettre à disposition un service informatique</div>
-        <span class="bloc-status status-partial">En cours d'acquisition</span>
-      </div>
-      <div class="bloc-card">
-        <div class="bloc-ref">B1.5</div>
-        <div class="bloc-title">Former et accompagner les utilisateurs</div>
-        <span class="bloc-status status-todo">À acquérir</span>
-      </div>
-      <div class="bloc-card">
-        <div class="bloc-ref">B1.6</div>
-        <div class="bloc-title">Organiser son développement professionnel</div>
-        <span class="bloc-status status-partial">En cours — veille active</span>
+        <div class="bloc-ref">B2.3</div>
+        <div class="bloc-title">Gérer les données</div>
+        <span class="bloc-status status-done">Mobilisée en projet</span>
+        <div class="bloc-proof">
+          Preuves : base MySQL avec PDO dans <a href="#stagensemble">StagEnsemble</a>, procédures SQL pendant le <a href="#stages">stage</a>
+        </div>
       </div>
     </div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; margin-top:3rem; margin-bottom:.3rem">
+      Compétences <em style="color:var(--rose-deep)">Bloc 3</em> — Cybersécurité
+    </h3>
+    <div class="divider"></div>
+    <div class="bloc1-grid">
+      <div class="bloc-card">
+        <div class="bloc-ref">B3.5</div>
+        <div class="bloc-title">Assurer la cybersécurité d'une solution applicative et de son développement</div>
+        <span class="bloc-status status-partial">En cours d'acquisition</span>
+        <div class="bloc-proof">
+          Preuves : mots de passe hachés dans <a href="#stagensemble">StagEnsemble</a> ; veille <a href="#veille">Zero Trust</a>
+        </div>
+      </div>
+      <div class="bloc-card">
+        <div class="bloc-ref">B3.1</div>
+        <div class="bloc-title">Protéger les données à caractère personnel</div>
+        <span class="bloc-status status-todo">À travailler</span>
+      </div>
+    </div>
+        <details class="bloc1-details" style="margin-top:3rem">
+      <summary>Compétences <em style="color:var(--rose-deep)">Bloc 1</em> — Support et mise à disposition de services</summary>
+      <div class="bloc1-grid">
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.1</div>
+          <div class="bloc-title">Répondre aux incidents et demandes d'assistance</div>
+          <span class="bloc-status status-todo">À acquérir en stage</span>
+        </div>
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.2</div>
+          <div class="bloc-title">Gérer le patrimoine informatique</div>
+          <span class="bloc-status status-partial">En cours d'acquisition</span>
+        </div>
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.3</div>
+          <div class="bloc-title">Gérer les accès et l'identité</div>
+          <span class="bloc-status status-todo">À acquérir en stage</span>
+        </div>
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.4</div>
+          <div class="bloc-title">Mettre à disposition un service informatique</div>
+          <span class="bloc-status status-partial">En cours d'acquisition</span>
+        </div>
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.5</div>
+          <div class="bloc-title">Former et accompagner les utilisateurs</div>
+          <span class="bloc-status status-todo">À acquérir</span>
+        </div>
+        <div class="bloc-card">
+          <div class="bloc-ref">B1.6</div>
+          <div class="bloc-title">Organiser son développement professionnel</div>
+          <span class="bloc-status status-partial">En cours — veille active</span>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
